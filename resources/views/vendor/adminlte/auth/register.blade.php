@@ -14,8 +14,8 @@
             </div>
 
             @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <strong>Whoops!</strong> {{ trans('adminlte_lang::message.someproblems') }}<br><br>
+                <div class="alert alert-dismissible alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -25,13 +25,50 @@
             @endif
 
             <div class="register-box-body">
-                <p class="login-box-msg">{{ trans('adminlte_lang::message.registermember') }}</p>
+                <p class="login-box-msg"><b>Nouvelle utilisateur</b></p>
 
-                <register-form></register-form>
+                <form class="validate_form" method="POST" action="{{ route('register') }}">
+                        {{ csrf_field() }}
 
-               <!-- @include('adminlte::auth.partials.social_login') -->
+                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }} has-feedback">
+                                <input id="name" type="text" placeholder="Nom et Prenom" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                        </div>
 
-                <a href="{{ url('/login') }}" class="text-center">{{ trans('adminlte_lang::message.membreship') }}</a>
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
+                                <input id="email" type="email" placeholder="E-mail" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} has-feedback">
+                                <input id="password" type="password" placeholder="Mot de passe" class="form-control" name="password" required>
+                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                        </div>
+
+                        <div class="form-group">
+                                <input id="password-confirm" type="password" placeholder="Confirmer votre mot de passe" class="form-control" name="password_confirmation" required>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-7">
+                                <label>
+                                     <div class="form-check-label">
+                                          <label data-toggle="modal" data-target="#termsModal">
+                                               <input type="checkbox" name="terms" model="form.terms" class="has-error">
+                                               <a href="#" class="{ 'text-danger': form.errors.has('terms') }" text="trans('adminlte_lang_message.conditions')">Terms and conditions</a>
+                                          </label>
+                                     </div>
+                                </label>
+                            </div>
+
+                            <div class="col-xs-5">
+                                <button type="submit" class="btn btn-primary">
+                                    Register
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
             </div><!-- /.form-box -->
         </div><!-- /.register-box -->
     </div>

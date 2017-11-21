@@ -15,7 +15,6 @@
         @if (count($errors) > 0)
            <div class="alert alert-dismissible alert-danger">
            <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <!-- <strong>Whoops!</strong> {{ trans('adminlte_lang::message.someproblems') }}<br><br> -->
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -25,50 +24,45 @@
         @endif
 
         <div class="login-box-body">
-        <p class="login-box-msg"> {{ trans('adminlte_lang::message.siginsession') }} </p>
+        <p class="login-box-msg"> <b>Veuillez vous identifier</b> </p>
 
-                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
+                    <form class="validate_form" method="POST" action="{{ route('login') }}">
 
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <div class="col-md-12">
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">
                                 <input id="email" placeholder="E-mail" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                            </div>
+                                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                         </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-
-                            <div class="col-md-12">
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }} has-feedback">
                                 <input id="password" placeholder="Password" type="password" class="form-control" name="password" required>
-
-                            </div>
+                                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                         </div>
 
                         <div class="row">
-                                <div class="col-xs-8">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                                        </label>
-                                    </div>
+                            <div class="col-xs-8">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Se souvenir de moi
+                                    </label>
                                 </div>
+                            </div>
 
-                                <div class="col-xs-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Login
-                                    </button>
+                            <div class="col-xs-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Login
+                                </button>
 
-                                </div>
+                            </div>
                         </div>
 
                         <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Forgot Your Password?
+                                    Mot de passe oublié?
                         </a>
                     </form>
 
-    </div>
+        </div>
 
     </div>
     </div>

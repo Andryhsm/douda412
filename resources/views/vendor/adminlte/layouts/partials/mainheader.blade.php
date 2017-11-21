@@ -6,7 +6,7 @@
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>M</b>.S</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Admin</b> Medsoft </span>
+        <span class="logo-lg"><b>Medsoft</b>-sante </span>
     </a>
 
     <!-- Header Navbar -->
@@ -131,7 +131,7 @@
                                 </p>
                             </li>
                             <!-- Menu Body -->
-                            <li class="user-body">
+                            <!-- <li class="user-body">
                                 <div class="col-xs-4 text-center">
                                     <a href="#">{{ trans('adminlte_lang::message.followers') }}</a>
                                 </div>
@@ -141,7 +141,7 @@
                                 <div class="col-xs-4 text-center">
                                     <a href="#">{{ trans('adminlte_lang::message.friends') }}</a>
                                 </div>
-                            </li>
+                            </li> -->
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
