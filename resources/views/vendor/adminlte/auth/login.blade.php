@@ -9,7 +9,7 @@
     <div id="app" v-cloak>
         <div class="login-box">
             <div class="login-logo">
-                <a href="{{ url('/home') }}"><b>Admin</b>LTE</a>
+                <a href="{{ url('/home') }}"><b>Admin</b></a>
             </div><!-- /.login-logo -->
 
         @if (count($errors) > 0)
@@ -26,13 +26,46 @@
         <div class="login-box-body">
         <p class="login-box-msg"> {{ trans('adminlte_lang::message.siginsession') }} </p>
 
-        <login-form name="{{ config('auth.providers.users.field','email') }}"
-                    domain="{{ config('auth.defaults.domain','') }}"></login-form>
+                    <form class="form-horizontal" method="POST" action="{{ route('login') }}">
 
-        <!-- @include('adminlte::auth.partials.social_login') -->
+                        {{ csrf_field() }}
 
-        <a href="{{ url('/password/reset') }}">{{ trans('adminlte_lang::message.forgotpassword') }}</a><br>
-        <a href="{{ url('/register') }}" class="text-center">{{ trans('adminlte_lang::message.registermember') }}</a>
+                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                            <div class="col-md-12">
+                                <input id="email" placeholder="E-mail" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+
+                            <div class="col-md-12">
+                                <input id="password" placeholder="Password" type="password" class="form-control" name="password" required>
+                                
+                            </div>
+                        </div>
+
+                        <div class="row">
+                                <div class="col-xs-8">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        Login
+                                    </button>
+
+                                </div>
+                        </div>
+                        
+                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    Forgot Your Password?
+                        </a>
+                    </form>
 
     </div>
 
