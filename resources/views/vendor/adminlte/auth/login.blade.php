@@ -13,8 +13,9 @@
             </div><!-- /.login-logo -->
 
         @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <strong>Whoops!</strong> {{ trans('adminlte_lang::message.someproblems') }}<br><br>
+           <div class="alert alert-dismissible alert-danger">
+           <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <!-- <strong>Whoops!</strong> {{ trans('adminlte_lang::message.someproblems') }}<br><br> -->
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -41,7 +42,7 @@
 
                             <div class="col-md-12">
                                 <input id="password" placeholder="Password" type="password" class="form-control" name="password" required>
-                                
+
                             </div>
                         </div>
 
@@ -61,7 +62,7 @@
 
                                 </div>
                         </div>
-                        
+
                         <a class="btn btn-link" href="{{ route('password.request') }}">
                                     Forgot Your Password?
                         </a>
