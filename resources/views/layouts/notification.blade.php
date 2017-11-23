@@ -10,8 +10,3 @@
         </ul>
     </div>
 @endif
-
-<div class="alert ajax-request-alert  hidden">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <span class="alert-message"></span>
-</div>
