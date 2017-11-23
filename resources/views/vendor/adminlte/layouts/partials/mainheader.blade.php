@@ -117,14 +117,22 @@
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- The user image in the navbar-->
-                            <img src="{{ Gravatar::get($user->email) }}" class="user-image" alt="User Image"/>
+                            @if (Auth::user()->profile_image)
+                                <img src="upload/profile/{{ Auth::user()->profile_image }}" class="img-circle" width="25" height="25" alt="User Image" />
+                            @else    
+                                <img src="{{ Gravatar::get($user->email) }}" class="img-circle" width="25" alt="User Image" />
+                            @endif 
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             <span class="hidden-xs">{{ Auth::user()->name }}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
                             <li class="user-header">
+                            @if (Auth::user()->profile_image)
+                                <img src="upload/profile/{{ Auth::user()->profile_image }}" class="img-circle" alt="User Image" />
+                            @else    
                                 <img src="{{ Gravatar::get($user->email) }}" class="img-circle" alt="User Image" />
+                            @endif    
                                 <p>
                                     {{ Auth::user()->name }}
                                     <small>{{ trans('adminlte_lang::message.login') }} Nov. 2012</small>
@@ -145,7 +153,7 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="{{ url('/settings') }}" class="btn btn-default btn-flat">{{ trans('adminlte_lang::message.profile') }}</a>
+                                    <a href="{{ url('users/'.Auth::user()->id.'/edit') }}" class="btn btn-default btn-flat">{{ trans('adminlte_lang::message.profile') }}</a>
                                 </div>
                                 <div class="pull-right">
                                     <a href="{{ url('/logout') }}" class="btn btn-default btn-flat" id="logout"

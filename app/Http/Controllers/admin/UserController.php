@@ -97,7 +97,7 @@ class UserController extends Controller
              $user_id = $this->user_repository->create($request->all(), $image_name);
 
             if ($user_id) {
-                flash('Utilisateur ajouter avec succès!')->success();
+                flash('Utilisateur ajouté avec succès!')->success();
                 return Redirect::to('users');
             }
         }
@@ -156,7 +156,7 @@ class UserController extends Controller
                 }
             }
             $user = $this->user_repository->update($id, $request->all(), $image_name);
-            flash('Utilisateur modifier avec succès!')->success();
+            flash('Utilisateur modifié avec succès!')->success();
             return Redirect::to('users');
         }
     }
@@ -170,7 +170,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         if ($this->user_repository->delete($id)) {
-            flash('Utilisateur supprimer avec succès!')->success();
+            flash('Utilisateur supprimé avec succès!')->success();
             return Redirect('users');
         }
     }
