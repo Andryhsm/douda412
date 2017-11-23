@@ -16,6 +16,7 @@
 	<!-- Main content -->
 
 	<section class="content-header">
+		@include('layouts.notification')
         <div class="row">
 		    <div class="col-xs-4">
 		        <h4>

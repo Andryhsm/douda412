@@ -170,6 +170,8 @@ return [
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -182,7 +184,7 @@ return [
         /*
          * Custom Service providers
          */
-        Yajra\DataTables\DataTablesServiceProvider::class,
+        
 
     ],
 

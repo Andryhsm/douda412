@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use App\User;
 use Illuminate\Support\Facades\Input;
 use DataTables;
@@ -96,6 +97,7 @@ class UserController extends Controller
              $user_id = $this->user_repository->create($request->all(), $image_name);
 
             if ($user_id) {
+                flash('Utilisateur ajouter avec succès!')->success();
                 return Redirect::to('users');
             }
         }
@@ -154,6 +156,7 @@ class UserController extends Controller
                 }
             }
             $user = $this->user_repository->update($id, $request->all(), $image_name);
+            flash('Utilisateur modifier avec succès!')->success();
             return Redirect::to('users');
         }
     }
@@ -167,6 +170,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         if ($this->user_repository->delete($id)) {
+            flash('Utilisateur supprimer avec succès!')->success();
             return Redirect('users');
         }
     }
