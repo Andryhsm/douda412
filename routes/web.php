@@ -24,6 +24,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::resource('users', 'admin\Usercontroller');
+    Route::get('user/get-data', 'admin\UserController@getData')->name('user-data');
     //    Route::get('/link1', function ()    {
 //        // Uses Auth Middleware
 //    });

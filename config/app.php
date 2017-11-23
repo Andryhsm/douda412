@@ -170,6 +170,8 @@ return [
         Acacha\AdminLTETemplateLaravel\Providers\AdminLTETemplateServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -235,7 +237,8 @@ return [
         'AdminLTE' => Acacha\AdminLTETemplateLaravel\Facades\AdminLTE::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'LaravelLocalization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class
+        'LaravelLocalization' => Mcamara\LaravelLocalization\Facades\LaravelLocalization::class,
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
 
     ],
 

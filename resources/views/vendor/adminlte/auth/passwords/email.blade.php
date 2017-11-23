@@ -21,8 +21,8 @@
         @endif
 
         @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <strong>Whoops!</strong> {{ trans('adminlte_lang::message.someproblems') }}<br><br>
+            <div class="alert alert-dismissible alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <ul>
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -32,12 +32,28 @@
         @endif
 
         <div class="login-box-body">
-            <p class="login-box-msg">Reset Password</p>
+            <p class="login-box-msg"><b>Reinitialisation mot de passe</b></p>
 
-            <email-reset-password-form></email-reset-password-form>
+            <form class="validate_form" method="POST" action="{{ route('password.email') }}">
+                {{ csrf_field() }}
 
-            <a href="{{ url('/login') }}">Log in</a><br>
-            <!-- <a href="{{ url('/register') }}" class="text-center">{{ trans('adminlte_lang::message.registermember') }}</a> -->
+                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }} has-feedback">                    
+                    <input id="email" type="email" placeholder="E-mail" class="form-control" name="email" value="{{ old('email') }}" required>
+                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-8">
+                        <a href="{{ url('/login') }}">Se connecter</a><br>
+                    </div>
+                    <div class="col-xs-4">
+                        <button type="submit" class="btn btn-primary">
+                            Envoyer 
+                        </button>
+                    </div>
+                </div>
+
+            </form>
 
         </div><!-- /.login-box-body -->
 

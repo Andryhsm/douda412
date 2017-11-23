@@ -6,14 +6,18 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link href="{{ asset('/css/all.css') }}" rel="stylesheet" type="text/css" />
+    {!! Html::style('plugins/dataTables.bootstrap.css') !!}
 
+    @yield('additional-styles')
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <script type="text/javascript">
+        var base_url = {!! "'".URL::to('/')."/'" !!};
+    </script>
     <script>
         //See https://laracasts.com/discuss/channels/vue/use-trans-in-vuejs
         window.trans = @php
@@ -28,4 +32,9 @@
             echo json_encode($trans);
         @endphp
     </script>
+    {!! Html::script('plugins/jquery-2.2.3.min.js') !!}
+    {!! Html::script('plugins/jquery.dataTables.min.js') !!}
+    {!! Html::script('plugins/dataTables.bootstrap.min.js') !!}
+
+    @yield('additional-scripts')
 </head>
