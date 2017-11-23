@@ -10,13 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['prefix' => LaravelLocalization::setLocale()], function()
+{
+	/** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
+	Route::get('/', function () {
+		//App::setLocale($locale);
+    	return view('welcome');
+	});
 
-Route::get('/', function () {
-    return view('welcome');
+	//admin login route
+	Route::get('/admin', 'Auth\LoginController@showLoginForm');
 });
 
-//admin login route
-Route::get('/admin', 'Auth\LoginController@showLoginForm');
 
 Route::group(['middleware' => 'auth'], function () {
     //    Route::get('/link1', function ()    {
